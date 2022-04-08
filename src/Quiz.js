@@ -18,9 +18,10 @@ function Quiz () {
     const superId = useParams()
     let navigate = useNavigate();
 
-   const getAllQuizes = () =>{
-        axios.get('https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/'+superId.id,
-        {headers:{
+   const getAllQuizes = async () =>{
+        await axios.get('https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/'+superId.id,
+        {
+            headers:{
                     "X-Access-Token": '00e42cabcc70501b0941ae177326c2c7407e96d701a97a82d97577d4db27e6de',
                 }
         })
@@ -37,8 +38,10 @@ function Quiz () {
    function startQuiz(){
     console.log(superId)
     let path = '/quizes/'+ superId.id + '/' + questions[0].id
-    console.log(path)
+    console.log(questions)
     navigate(path);
+    <Answer questions = {questions} />
+
    }
 return(
     <div>
@@ -52,6 +55,7 @@ return(
         {
             console.log(questions)
         }
+        
         </div>
 )
 }
