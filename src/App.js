@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/add" element={<Protected Cmp={AddQuiz}/>} />
         <Route exact path="/register" element={<Register/>} />
         <Route path="/quizes/:id" element={<Protected Cmp={Quiz}/>} />
-        {/* <Route path="/quizes/:id/:id" element={<Protected Cmp={Answer}/>} /> */}
+        <Route path="/quizes/:id/:idx" element={<Protected Cmp={Answer}/>} />
 
         <Route
         path="*"
