@@ -1,9 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import GetQuiz from "./GetQuiz";
 import Quiz from "./Quiz";
 function PrintQuizes(props){
-    const [quiz_id, setQuizId] = useState(0);
     let entries = Object.entries(props);
     console.table(entries);
 
@@ -15,7 +13,6 @@ function PrintQuizes(props){
         let path = '/quizes/'+ idx
         navigate(path);
         <Quiz id={id}/>
-
     }
     return(
         <div className="quizesContainer">
