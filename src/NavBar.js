@@ -10,7 +10,7 @@ function NavBar(){
     function logOut()
     {
         localStorage.clear();
-        navigate("/login")
+        navigate("/register")
     }
     return(
         <div>
@@ -31,7 +31,6 @@ function NavBar(){
                         </>
                         :
                         <>
-                        <Nav.Link href="/login">Login</Nav.Link>
                         <Nav.Link href="/register">Register</Nav.Link>
                         </>
                     }

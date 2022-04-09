@@ -1,12 +1,10 @@
 import './App.css';
 import Home from './pages/Home';
-import Login from './pages/Login';
 import About from './pages/About';
 import Quizes from './pages/Quizes';
 import AddQuiz from './AddQuiz';
 import Register from './pages/Register';
 import Protected from './Protected';
-import Answer from './Answer';
 import Quiz from './Quiz';
 import { Route, Routes } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
@@ -18,7 +16,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route exact path="/about" element={<Protected Cmp={About}/>} />
-        <Route exact path="/login" element={<Login/>} />
         <Route exact path="/quizes" element={<Protected Cmp={Quizes}/>} />
         <Route exact path="/add" element={<Protected Cmp={AddQuiz}/>} />
         <Route exact path="/register" element={<Register/>} />

@@ -5,6 +5,7 @@ import axios from "axios";
 function Register(){
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
+    const [error, setError] = useState('');
 
     const navigate = useNavigate();
     const submitHandler = (e) => {
@@ -28,6 +29,8 @@ function Register(){
         })
         .catch((err)=>{
             console.log(err)
+            setError('User with this name and surname already exists!');
+            
         })
         
     }
@@ -37,14 +40,15 @@ function Register(){
 
         <div className="col-sm-6 offset-sm-3">
             <form onSubmit={submitHandler}>
-                <h1>Register a user</h1>
+                <h1>Create a user</h1>
                 <label htmlFor="name" className="form-label">Name</label>
                 <input type="text" className="form-control" value={name} onChange={(e)=>setName(e.target.value)}/>
                 <br/>
                 <label htmlFor="surname" className="form-label">Surname</label>
                 <input type="text" className="form-control" value={surname} onChange={(e)=>setSurname(e.target.value)}/>
                 <br/>
-                <button type="submit">Register</button>
+                {error && <div className="text-danger">{error}</div>}
+                <button type="submit">Enter</button>
             </form>
         </div>
        </>
