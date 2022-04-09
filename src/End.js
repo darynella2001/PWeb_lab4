@@ -3,24 +3,26 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 const End = ({results, data}) => {
-    // const [correctAnswers, setCorrectAnswers] = useState(0);
-    const [userId, setUserId] = useState(0);
-    const quizId = useParams().id
+    const [userId, setUserId] = useState(JSON.parse(localStorage.getItem('user-info')).id);
+    const [response, setResponse] = useState([]);
+    const [score, setScore] = useState(0);
+    const quizId = useParams().id;
+    const boolArr = [];
     useEffect(() => {
-        setUserId(JSON.parse(localStorage.getItem('user-info')).id);
+        // const index = ;
+        // setUserId(JSON.parse(localStorage.getItem('user-info')).id)
         console.log('user id', userId);
-        results.map(r => submitAnswer(r.id, r.a));
-    })
+        results.map(r => submitAnswer(r.id, r.a, userId));
 
+    }, [])
 
-
-
-    function submitAnswer (question_id, answer) {
-        setUserId(JSON.parse(localStorage.getItem('user-info')).id);
-        console.log('user id', userId);
-        let user_id = userId
+    function submitAnswer (question_id, answer, user_id) {
+        // setUserId(JSON.parse(localStorage.getItem('user-info')).id);
+        // console.log('user id', userId);
+        // let user_id = userId
+        // console.log("the id is", user_id)
         const postData = {data : {question_id, answer, user_id}}
-        // console.log(postData)
+        console.log(postData)
 
         axios.post('https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/'+ quizId +'/submit', postData,  
         {headers:{
@@ -28,25 +30,28 @@ const End = ({results, data}) => {
                     }
                 })
         .then((res) => {
-            console.log(res.data)
+            setResponse(prevState => [ ...prevState, res.data])
+            console.log("res data", res.data)
+            if (res.data.correct)
+                setScore(prevState => prevState + 1)
         })
         .catch((err)=>{
             console.log(err)
         })
       }
-
+    
+      
 
     return(
         <div className="card">
             <div className='card-content'>
                 <div className='content'>
                     <h3>Your results</h3>
-                    <p>8 of {data.length}</p>
+                    <p>{score} of {data.length}</p>
                     <p><strong>80%</strong></p>
                     <p><strong>Your time:</strong> 15 s</p>
                     <button className='button is-info mr-2' >Check your answers</button>
                     <button className='button is-info mr-2'>Try again</button>
-
                 </div>
             </div>
         </div>
