@@ -5,7 +5,7 @@ export default function Home(){
         <div>
                   <NavBar />
 
-            <h1>Welcome to my Website!</h1>
+            <h1>Welcome to Hogwarts!</h1>
         </div>
     );
 }

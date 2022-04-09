@@ -1,17 +1,13 @@
 .App {
   text-align: center;
-  text-decoration-color: white ;
+  color: #212529  ;
  }
-body{
+/* body{
   background-image: url("/public/bg2.jpg");
-  /* background-repeat:no-repeat; */
   background-size:cover;
   background-position: center center;
   background-attachment: fixed;
-
-
-  /* background-position:center; */
-}
+} */
 .quizesContainer {
   display: flex;
   align-items: center;
