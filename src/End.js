@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 // import { formatTime } from './src/utils';
 
@@ -21,6 +21,8 @@ const End = ({results, data, time}) => {
     const [score, setScore] = useState(0);
     const quizId = useParams().id;
 
+    const navigate = useNavigate();
+ 
     useEffect(() => {
         console.log('user id', userId);
         results.map(r => submitAnswer(r.id, r.a, userId));
@@ -45,6 +47,7 @@ const End = ({results, data, time}) => {
             console.log(err)
         })
       }
+    
     return(
         <div className="card">
             <div className='card-content'>
@@ -53,8 +56,7 @@ const End = ({results, data, time}) => {
                     <p>{score} of {data.length}</p>
                     <p><strong>{score * 10}%</strong></p>
                     <p><strong>Your time:</strong>  {formatTime(time)}</p>
-                    <button className='button is-info mr-2' >Check your answers</button>
-                    <button className='button is-info mr-2'>Try again</button>
+                    <button className='button is-info mr-2' onClick={()=>navigate("/quizes")}> Return to Quizes</button>
                 </div>
             </div>
         </div>
