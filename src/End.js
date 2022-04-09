@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
+// import { formatTime } from './src/utils';
 
-const End = ({results, data}) => {
+const formatTime = time => {
+    if(time < 60) {
+      return time < 10 ? `0${time}s` : `${time}s`;
+    }else {
+      return Math.floor(time / 60) + 'm' + (time % 60) + 's';
+    }
+  }
+  
+  export {
+    formatTime
+  }
+
+const End = ({results, data, time}) => {
     const [userId, setUserId] = useState(JSON.parse(localStorage.getItem('user-info')).id);
     const [response, setResponse] = useState([]);
     const [score, setScore] = useState(0);
     const quizId = useParams().id;
-    const boolArr = [];
+
     useEffect(() => {
-        // const index = ;
-        // setUserId(JSON.parse(localStorage.getItem('user-info')).id)
         console.log('user id', userId);
         results.map(r => submitAnswer(r.id, r.a, userId));
-
     }, [])
 
     function submitAnswer (question_id, answer, user_id) {
-        // setUserId(JSON.parse(localStorage.getItem('user-info')).id);
-        // console.log('user id', userId);
-        // let user_id = userId
-        // console.log("the id is", user_id)
         const postData = {data : {question_id, answer, user_id}}
         console.log(postData)
 
@@ -39,17 +45,14 @@ const End = ({results, data}) => {
             console.log(err)
         })
       }
-    
-      
-
     return(
         <div className="card">
             <div className='card-content'>
                 <div className='content'>
                     <h3>Your results</h3>
                     <p>{score} of {data.length}</p>
-                    <p><strong>80%</strong></p>
-                    <p><strong>Your time:</strong> 15 s</p>
+                    <p><strong>{score * 10}%</strong></p>
+                    <p><strong>Your time:</strong>  {formatTime(time)}</p>
                     <button className='button is-info mr-2' >Check your answers</button>
                     <button className='button is-info mr-2'>Try again</button>
                 </div>
