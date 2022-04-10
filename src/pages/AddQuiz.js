@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import NavBar from "../NavBar";
+import CreateQuiz from "../CreateQuiz";
 
 const AddQuiz = () => {
   const [step, setStep] = useState(1);
@@ -32,7 +33,7 @@ const AddQuiz = () => {
       </div>
       }
 
-      {/* {step === 2 && } */}
+      {step === 2 && <CreateQuiz/> }
     </div>
   )
 
