@@ -1,11 +1,38 @@
 import React, {useState} from "react";
-import NavBar from "./NavBar";
+import NavBar from "../NavBar";
 
-function AddQuiz(){
+const AddQuiz = () => {
+  const [step, setStep] = useState(1);
+  const [questionsNumber, setQuestionsNumber] = useState(1);
+  let number;
+
+  const quizSetHandler = () => {
+    console.log("number of questions = ", questionsNumber)
+    setStep(2);
+
+  }
+
   return (
     <div>
       <NavBar/>
-      <h1> In progress ...</h1>
+      
+      {step === 1 && 
+      <div className="Quiz">
+        <div className="card">
+        <div className="card-body">
+          <div>
+            <h1 className="card-title">Insert the number of questions:</h1>
+                <input  type="number" value={number} min="1"  start="1" onChange={(e)=>setQuestionsNumber(e.target.value)}/>
+                {console.log(questionsNumber)}
+                <br/>
+                <button className="btn btn-dark mt-3" onClick={quizSetHandler}>Start</button>
+          </div>
+        </div>
+        </div>
+      </div>
+      }
+
+      {/* {step === 2 && } */}
     </div>
   )
 

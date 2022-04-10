@@ -69,7 +69,7 @@ label.radio+.radion {
 label.radio input {
   margin-right: 10px;
 }
-input {
+input[type="radio"] {
   visibility:hidden;
 }
 

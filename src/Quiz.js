@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 
 let interval; 
 
-const Quiz =  () => {
+const Quiz = () => {
     // console.log("here",props)
     const [step, setStep] = useState(1);
     const [activeQuestion, setActiveQuestion] = useState(0);
