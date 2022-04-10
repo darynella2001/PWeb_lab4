@@ -1,15 +1,21 @@
 import React, {useState} from "react";
 import NavBar from "../NavBar";
+import Question from "../Question";
 import CreateQuiz from "../CreateQuiz";
 
 const AddQuiz = () => {
   const [step, setStep] = useState(1);
+  const [error, setError] = useState('');
   const [questionsNumber, setQuestionsNumber] = useState(1);
   let number;
 
   const quizSetHandler = () => {
-    console.log("number of questions = ", questionsNumber)
-    setStep(2);
+    if(questionsNumber >= 1){
+      console.log("number of questions = ", questionsNumber)
+      setStep(2);}
+      else {
+        setError('Please, select a valid number greater than zero!');
+      }
 
   }
 
@@ -26,14 +32,18 @@ const AddQuiz = () => {
                 <input  type="number" value={number} min="1"  start="1" onChange={(e)=>setQuestionsNumber(e.target.value)}/>
                 {console.log(questionsNumber)}
                 <br/>
-                <button className="btn btn-dark mt-3" onClick={quizSetHandler}>Start</button>
+                {error && <div className="text-danger">{error}</div>}
+                <br/>
+                <button className="btn btn-dark" onClick={quizSetHandler}>Start</button>
           </div>
         </div>
         </div>
       </div>
       }
 
-      {step === 2 && <CreateQuiz numberOfQuestions={questionsNumber}/> }
+      {step === 2 && <CreateQuiz numberOfQuestions={questionsNumber} onSetStep={setStep}/> }
+      {step === 3 && <Question/>}
+    
     </div>
   )
 
