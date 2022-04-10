@@ -1,15 +1,14 @@
 import React, {useState} from "react";
 
 const CreateQuiz = ({numberOfQuestions, onSetStep}) => {
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState('');
     const [error, setError] = useState('');
 
-    const titleSetHandler = () => {
-        if(title === ''){
+    function titleSetHandler () {
+        if(title.length === 0){
             setError('Please, insert a title!');
-          }
+        }else
         onSetStep(3);
-    
       }
     return(
         <div className="Form">
@@ -20,9 +19,9 @@ const CreateQuiz = ({numberOfQuestions, onSetStep}) => {
                     <input type="text" className="form-control" value={title} onChange={(e)=>setTitle(e.target.value)}/>
                     <br/>
                     {error && <div className="text-danger">{error}</div>}
-                <br/>
+                    <br/>
                 <button className="btn btn-dark" onClick={titleSetHandler}>Start</button>
-                 
+                
                 </div>
                 </div>
         </div>
