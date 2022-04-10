@@ -1,13 +1,20 @@
 .App {
   text-align: center;
-  color: #212529  ;
+  color: #212529  ;   
+  font-family: Raleway, sans-serif;
+
  }
-/* body{
-  background-image: url("/public/bg2.jpg");
+ body{ 
+  /* background-image: url("/public/bg2.jpg");
   background-size:cover;
   background-position: center center;
-  background-attachment: fixed;
-} */
+  background-attachment: fixed; */
+} 
+
+.homePage{
+  background-image: url("/public/bg2.jpg");
+  background-size:cover;
+}
 .quizesContainer {
   display: flex;
   align-items: center;
@@ -20,7 +27,8 @@
   margin: 10px;
   padding: 15px;
   border-radius: 10px;
-  background-color: rgb(228, 228, 228);
+  background-color: #212529;
+  color: whitesmoke;
 }
 
 .quizName {
@@ -28,7 +36,7 @@
 }
 
 .quizContainer:hover {
-  background-color: rgb(207, 207, 207);
+  background-color: #444c54;
   cursor: pointer;
 }
 
@@ -60,4 +68,15 @@ label.radio+.radion {
 
 label.radio input {
   margin-right: 10px;
+}
+input {
+  visibility:hidden;
+}
+
+label:hover {
+  background-color: #bbc1c6;
+  cursor: pointer;
+}
+input[type="radio"]:checked + label {
+  background: #9ca8b3;
 }

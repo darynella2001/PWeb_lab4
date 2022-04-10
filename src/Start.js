@@ -3,11 +3,11 @@ import React from 'react';
 const Start = ({ onQuizStart }) => {
   return(
     <div className="card">
-      <div className="card-content">
-        <div className="content">
-          <h1>Start the quiz</h1>
-          <p>Good luck!</p>
-          <button className="button is-info is-medium" onClick={onQuizStart}>Start</button>
+      <div className="card-body">
+        <div>
+          <h1 className="card-title">Start the quiz</h1>
+          <p className="card-text">Good luck!</p>
+          <button className="btn btn-dark" onClick={onQuizStart}>Start</button>
         </div>
       </div>
     </div>

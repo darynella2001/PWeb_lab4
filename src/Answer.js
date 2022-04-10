@@ -41,20 +41,21 @@ useEffect( () => {
     
     return(
         <div className="card">
-            <div className="card-content">
-                <div className="content">
-                    <h2 className="mb-5">{data.question}</h2>
-                    <div className="control" ref={radioWrapper}>
+            <div className="card-body">
+                <div>
+                    <h2 className="card-text mb-5">{data.question}</h2>
+                    <div className="radio-buttons col-sm-auto" ref={radioWrapper}>
                         {data.answers.map((choice, i) => (
                         
-                        <label className="radio has-background-light" key={i}>
-                            <input type="radio" name="answer" value={choice} onChange={changeHandler}/>
+                        <label className="card mb-3 " key={i}>
+                            <input type="radio" name="answer"  value={choice} onChange={changeHandler} />
                             {choice}
+                            
                         </label>
                         ))}           
                     </div>
                     {error && <div className="text-danger">{error}</div>}
-                    <button className="button is-link is-medium is-fullwidth mt-4" onClick={nextClickHandler}>Next</button>
+                    <button className="btn btn-dark" onClick={nextClickHandler}>Next</button>
                 </div>
             </div>
         </div>
