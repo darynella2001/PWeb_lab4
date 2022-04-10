@@ -33,7 +33,7 @@ const AddQuiz = () => {
       </div>
       }
 
-      {step === 2 && <CreateQuiz/> }
+      {step === 2 && <CreateQuiz numberOfQuestions={questionsNumber}/> }
     </div>
   )
 

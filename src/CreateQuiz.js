@@ -1,9 +1,10 @@
 import React from "react";
 
-const CreateQuiz = () => {
+const CreateQuiz = ({numberOfQuestions}) => {
     return(
         <div>
-            <h1>hai</h1>
+            <h1>{numberOfQuestions}</h1>
+
         </div>
     )
 
