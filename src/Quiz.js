@@ -64,7 +64,8 @@ return(
         activeQuestion={activeQuestion}
         onSetActiveQuestion={setActiveQuestion}
         onSetStep={setStep}
-        />}
+        />
+        }
         {
             step === 3 && 
             <End 

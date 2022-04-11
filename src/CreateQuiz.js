@@ -5,7 +5,7 @@ const CreateQuiz = ({numberOfQuestions, onSetStep}) => {
     const [error, setError] = useState('');
 
     function titleSetHandler () {
-        if(title.length === 0){
+        if(title === ''){
             setError('Please, insert a title!');
         }else
         onSetStep(3);

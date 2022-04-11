@@ -28,7 +28,7 @@ useEffect( () => {
         onAnswerUpdate(prevState => [... prevState, {q:data.question, a: selected, id:data.id}]);
         setSelected('');
        
-        console.log(selected)
+        console.log("selected answer: ",selected)
 
         // console.log(setAnswerText)
 
