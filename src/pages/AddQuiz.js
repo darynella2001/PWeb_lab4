@@ -6,8 +6,10 @@ import CreateQuiz from "../CreateQuiz";
 const AddQuiz = () => {
   const [step, setStep] = useState(1);
   const [error, setError] = useState('');
+  const [questions, setOneQuestion] = useState([]);
   const [questionsNumber, setQuestionsNumber] = useState(1);
   const [answers, setAnswers] = useState([]);
+  const [correctAnswer, setCorrectAnswer] = useState('');
   const [question, setQuestion] = useState('');
 
   let number;
@@ -19,8 +21,14 @@ const AddQuiz = () => {
       else {
         setError('Please, select a valid number greater than zero!');
       }
-
   }
+
+  function oneQuestionHandler  (q, a, c)  {
+    setOneQuestion(prevState => [...prevState, {"question":q, "answers":a, "correct_answer": c}]);
+    console.log("array of questions ", questions);
+  }
+
+
 
   return (
     <div>
@@ -47,9 +55,7 @@ const AddQuiz = () => {
       {step === 2 && <CreateQuiz numberOfQuestions={questionsNumber} onSetStep={setStep}/> }
       {step === 3 && 
       <div>
-      <Question  onAnswerUpdate={setAnswers} onQuestionUpdate={setQuestion}/>
-      <h3>{question}</h3>
-      <p>{answers.map(a => <h3>{a}</h3>)}</p>
+      <Question getQuestions={oneQuestionHandler}/>
       </div>
       }
     

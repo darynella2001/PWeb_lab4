@@ -39,7 +39,7 @@ const End = ({results, data, time}) => {
                 })
         .then((res) => {
             setResponse(prevState => [ ...prevState, res.data])
-            console.log("res data", res.data)
+            console.log("response data", res.data)
             if (res.data.correct)
                 setScore(prevState => prevState + 1)
         })
