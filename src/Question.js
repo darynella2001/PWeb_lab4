@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 
-const Question = ({onAnswerUpdate}) => {
+const Question = ({onAnswerUpdate, onQuestionUpdate}) => {
     // const [answers, set]
     const [question, setQuestion] = useState('');
     const [answer1, setAnswer1] = useState('');
     const [answer2, setAnswer2] = useState('');
     const [answer3, setAnswer3] = useState('');
     const [answer4, setAnswer4] = useState('');
-    const [answers, setAnswers] = useState([]);
     const [error, setError] = useState('');
     
     function questionSetHandler() {
@@ -20,6 +19,9 @@ const Question = ({onAnswerUpdate}) => {
 
         } else {
             // onAnswerUpdate(prevState => [... prevState, { question, "correct_answer": answer1}]);
+        
+        onQuestionUpdate(question);
+
         onAnswerUpdate(oldArray => [...oldArray, answer1]);
         onAnswerUpdate(oldArray => [...oldArray, answer2]);
         onAnswerUpdate(oldArray => [...oldArray, answer3]);
@@ -33,7 +35,6 @@ const Question = ({onAnswerUpdate}) => {
         // setAnswers(answer3);
         // setAnswers(answer4);
 
-        console.log('Answers == ', answers)
         // setAnswers(answer2);
         // setAnswers(answer3);
         // setAnswers

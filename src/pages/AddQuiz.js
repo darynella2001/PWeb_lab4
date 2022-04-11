@@ -8,6 +8,7 @@ const AddQuiz = () => {
   const [error, setError] = useState('');
   const [questionsNumber, setQuestionsNumber] = useState(1);
   const [answers, setAnswers] = useState([]);
+  const [question, setQuestion] = useState('');
 
   let number;
 
@@ -46,8 +47,9 @@ const AddQuiz = () => {
       {step === 2 && <CreateQuiz numberOfQuestions={questionsNumber} onSetStep={setStep}/> }
       {step === 3 && 
       <div>
-      <Question  onAnswerUpdate={setAnswers}/>
-      {/* <p>{answers.map(a => <h3>{a}</h3>)}</p> */}
+      <Question  onAnswerUpdate={setAnswers} onQuestionUpdate={setQuestion}/>
+      <h3>{question}</h3>
+      <p>{answers.map(a => <h3>{a}</h3>)}</p>
       </div>
       }
     
