@@ -38,7 +38,7 @@ function NavBar(){
                 localStorage.getItem('user-info') ?
 
                     <Nav>
-                        <NavDropdown className="pull-right" title={user && user.surname}>
+                        <NavDropdown className="float-md-right" title={user && user.surname}>
                             <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>

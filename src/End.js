@@ -53,7 +53,7 @@ const End = ({results, data, time}) => {
           <div className='card-body'>
               <h3 className="card-title">Your results</h3>
               <p className="card-subtitle mb-2">{score} of {data.length}</p>
-              <p ><strong>{score * 10}%</strong></p>
+              <p ><strong>{Math.floor((score * 100)/data.length)}%</strong></p>
               <p ><strong>Your time:</strong>  {formatTime(time)}</p>
               <button className='btn btn-dark' onClick={()=>navigate("/quizes")}> Return to Quizes</button>
           </div>

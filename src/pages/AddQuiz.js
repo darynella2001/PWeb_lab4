@@ -7,6 +7,7 @@ const AddQuiz = () => {
     const [formFields, setFormFields] = useState([{question:'',answers:[],correct_answer:''},])
     const [title, setTitle] = useState('');
     const [submission, setSubmission] = useState({data:{}})
+    const [error, setError] = useState('')
     const navigate = useNavigate();
     
     const handleFormChange = (event, index) => {
@@ -29,28 +30,32 @@ const AddQuiz = () => {
       }
     
       const submit = (e) => {
-        e.preventDefault();
-        console.log(formFields)
-        setSubmission(submission.data = {title, "questions":formFields})
-        console.log(submission);
+        // if([formFields.title, formFields.question, formFields.answers[0], formFields.answers[1], formFields.answers[2], formFields.answers[3]].some(x => x === '')){
+        //   setError('Please, fill all the fields!');
+        // }else{
+          e.preventDefault();
+          console.log(formFields)
+          setSubmission(submission.data = {title, "questions":formFields})
+          console.log(submission);
 
-        axios.post('https://pure-caverns-82881.herokuapp.com/api/v54/quizzes', submission,  
-        {headers:{
-                        "X-Access-Token": '00e42cabcc70501b0941ae177326c2c7407e96d701a97a82d97577d4db27e6de',
-                    }
-                })
-        .then((res) => {
-            // console.log(res.data.id)
-            // console.log(postData)
-            // postData.data.id = res.data.id
-            // console.log(postData)
-            // localStorage.setItem("user-info", JSON.stringify(postData["data"]))
-            navigate("/quizes")
-        })
-        .catch((err)=>{
-            console.log(err)            
-        })
-      }
+          axios.post('https://pure-caverns-82881.herokuapp.com/api/v54/quizzes', submission,  
+          {headers:{
+                          "X-Access-Token": '00e42cabcc70501b0941ae177326c2c7407e96d701a97a82d97577d4db27e6de',
+                      }
+                  })
+          .then((res) => {
+              // console.log(res.data.id)
+              // console.log(postData)
+              // postData.data.id = res.data.id
+              // console.log(postData)
+              // localStorage.setItem("user-info", JSON.stringify(postData["data"]))
+              navigate("/quizes")
+          })
+          .catch((err)=>{
+              console.log(err)            
+          })
+      
+    }
     
   
       const addFields = () => {
@@ -105,6 +110,8 @@ const AddQuiz = () => {
                                             <option value={form.answers[2]}>{form.answers[2]}</option>
                                             <option value={form.answers[3]}>{form.answers[3]}</option>
                                         </select>
+                                        <br/>
+                                        {error && <div className="text-danger">{error}</div>}
                                         <br/>
                                         <button className="btn btn-danger mb-3" onClick={() => removeFields(index)}>Remove One Question </button>
                                     </div>
