@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import NavBar from "../NavBar";
 import Question from "../Question";
+import Test from "../Test";
 import CreateQuiz from "../CreateQuiz";
 
 const AddQuiz = () => {
@@ -23,9 +24,11 @@ const AddQuiz = () => {
       }
   }
 
-  function oneQuestionHandler  (q, a, c)  {
-    setOneQuestion(prevState => [...prevState, {"question":q, "answers":a, "correct_answer": c}]);
-    console.log("array of questions ", questions);
+  function oneQuestionHandler  (q, a, c, i)  {
+    if (i < questionsNumber){
+      setOneQuestion(prevState => [...prevState, {"question":q, "answers":a, "correct_answer": c}]);
+      console.log("array of questions ", questions);
+    } else setStep(4);
   }
 
 
@@ -34,7 +37,7 @@ const AddQuiz = () => {
     <div>
       <NavBar/>
       
-      {step === 1 && 
+      {/* {step === 1 && 
       <div className="Quiz">
         <div className="card">
         <div className="card-body">
@@ -50,14 +53,21 @@ const AddQuiz = () => {
         </div>
         </div>
       </div>
-      }
+      } */}
 
-      {step === 2 && <CreateQuiz numberOfQuestions={questionsNumber} onSetStep={setStep}/> }
-      {step === 3 && 
+      {/* {step === 2 && <CreateQuiz numberOfQuestions={questionsNumber} onSetStep={setStep}/> } */}
+      {step === 1 && <Test />}
+
+      {/* // <div>
+      // <Question getQuestions={oneQuestionHandler} numberOfQuestions={questionsNumber}/>
+      // </div>} */}
+      {step ===4 && 
       <div>
-      <Question getQuestions={oneQuestionHandler}/>
-      </div>
-      }
+      <h1>{questions[0].question}</h1>
+      <h1>{questions[1].question}</h1>
+      <h1>{questions[2].question}</h1>
+      </div>}
+      
     
     </div>
   )
