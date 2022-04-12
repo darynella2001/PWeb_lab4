@@ -2,13 +2,11 @@ import React, {useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Test = () => {
+const QuizForm = () => {
     const [formFields, setFormFields] = useState([{question:'',answers:[],correct_answer:''},])
     const [title, setTitle] = useState('');
     const [submission, setSubmission] = useState({data:{}})
     const navigate = useNavigate();
-
-    
     
     const handleFormChange = (event, index) => {
         let data = [...formFields];
@@ -46,7 +44,7 @@ const Test = () => {
             // postData.data.id = res.data.id
             // console.log(postData)
             // localStorage.setItem("user-info", JSON.stringify(postData["data"]))
-            navigate("/about")
+            navigate("/quizes")
         })
         .catch((err)=>{
             console.log(err)            
@@ -117,7 +115,6 @@ const Test = () => {
                             <button className="btn btn-success" onClick={submit}>Submit Quiz</button>
                         
                     </div>
-
                 </div>
             </div>
         </div>
@@ -126,4 +123,4 @@ const Test = () => {
 
 }
 
-export default Test;
+export default QuizForm;

@@ -73,19 +73,7 @@ return(
             data = {questions}
             time = {time}
             />
-            
-            //<End
-            // results={answers}
-            // data={questions[activeQuestion]}
-            // onReset={resetClickHandler}
-            // onAnswersCheck={()=>{}}
-            // time={time}
-            // />
-            // console.log(questions[activeQuestion])
-            }
-            {/* console.log("userId",userId);
-            console.log(answers.map(a=>console.log("Results:", a.a)))} */}
-        {/* } */}
+        }
         </div>
         </div>
 )

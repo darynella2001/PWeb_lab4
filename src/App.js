@@ -1,6 +1,5 @@
 import './App.css';
 import Home from './pages/Home';
-import About from './pages/About';
 import Quizes from './pages/Quizes';
 import Register from './pages/Register';
 import AddQuiz from './pages/AddQuiz';
@@ -15,7 +14,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Home/>} />
-        <Route exact path="/about" element={<Protected Cmp={About}/>} />
         <Route exact path="/quizes" element={<Protected Cmp={Quizes}/>} />
         <Route exact path="/add" element={<Protected Cmp={AddQuiz}/>} />
         <Route exact path="/register" element={<Register/>} />

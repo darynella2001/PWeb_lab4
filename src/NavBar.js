@@ -25,7 +25,6 @@ function NavBar(){
                     {
                         localStorage.getItem('user-info') ?
                         <>
-                        <Nav.Link href="/about">About</Nav.Link>
                         <Nav.Link href="/quizes">Quizes</Nav.Link>
                         <Nav.Link href="/add">Create Quiz</Nav.Link>
                         </>
