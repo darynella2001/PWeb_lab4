@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
-// import { formatTime } from './src/utils';
+import * as ReactBootStrap from 'react-bootstrap';
+
 
 const formatTime = time => {
     if(time < 60) {
@@ -20,6 +21,8 @@ const End = ({results, data, time}) => {
     const [response, setResponse] = useState([]);
     const [score, setScore] = useState(0);
     const quizId = useParams().id;
+    const [loading, setLoading] = useState(false);
+
 
     const navigate = useNavigate();
  
@@ -42,6 +45,7 @@ const End = ({results, data, time}) => {
             console.log("response data", res.data)
             if (res.data.correct)
                 setScore(prevState => prevState + 1)
+            setLoading(true);
         })
         .catch((err)=>{
             console.log(err)
@@ -49,15 +53,21 @@ const End = ({results, data, time}) => {
       }
     
     return(
+      <div>
+        <br/><br/><br/><br/>
         <div className="card">
           <div className='card-body'>
               <h3 className="card-title">Your results</h3>
               <p className="card-subtitle mb-2">{score} of {data.length}</p>
-              <p ><strong>{Math.floor((score * 100)/data.length)}%</strong></p>
+              {loading ?  <p ><strong>{Math.floor((score * 100)/data.length)}%</strong></p> 
+              : <ReactBootStrap.Spinner animation="border"/>}
+              
+              
               <p ><strong>Your time:</strong>  {formatTime(time)}</p>
               <button className='btn btn-dark' onClick={()=>navigate("/quizes")}> Return to Quizes</button>
           </div>
         </div>
+      </div>
     );
 }
 export default End;

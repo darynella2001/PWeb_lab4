@@ -14,7 +14,7 @@ function NavBar(){
     }
     return(
         <div>
-            <Navbar style={{padding: "10px"}} collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar style={{padding: "10px"}} collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-top">
                 <Navbar.Brand href="/">
                     <img src={process.env.PUBLIC_URL + "/hogwarts.png"} width="50px"/>
                 </Navbar.Brand>

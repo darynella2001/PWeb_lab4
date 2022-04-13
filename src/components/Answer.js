@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
 
-
-const Answer = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep }) => {
+function Answer  ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep }) {
     const [selected, setSelected] = useState('');
     const [error, setError] = useState('');
     const radioWrapper = useRef();
@@ -40,22 +39,26 @@ useEffect( () => {
     }
     
     return(
-        <div className="card">
-            <div className="card-body">
-                <div>
-                    <h2 className="card-text mb-5">{data.question}</h2>
-                    <div className="radio-buttons col-sm-auto" ref={radioWrapper}>
-                        {data.answers.map((choice, i) => (
-                        
-                        <label className="card mb-3 " key={i}>
-                            <input type="radio" name="answer"  value={choice} onChange={changeHandler} />
-                            {choice}
+        <div>
+            <br/><br/><br/><br/>
+            <div className="card">
+                <div className="card-body">
+                    <div>
+                        <h2 className="card-text mb-5">{data.question}</h2>
+                        <div className="radio-buttons col-sm-auto" ref={radioWrapper}>
+                            {data.answers.map((choice, i) => (
                             
-                        </label>
-                        ))}           
+                            <label className="card mb-3 " key={i}>
+                                <input type="radio" name="answer"  value={choice} onChange={changeHandler} />
+                                {choice}
+                                
+                            </label>
+                            ))}           
+                        </div>
+                        {error && <div className="text-danger">{error}<br/><br/></div>}
+                        
+                        <button className="btn btn-dark" onClick={nextClickHandler}>Next</button>
                     </div>
-                    {error && <div className="text-danger">{error}</div>}
-                    <button className="btn btn-dark" onClick={nextClickHandler}>Next</button>
                 </div>
             </div>
         </div>

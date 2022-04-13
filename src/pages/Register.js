@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
-import NavBar from "../NavBar";
+import NavBar from "../components/NavBar";
 import axios from "axios";
 function Register(){
     const [name, setName] = useState("")
@@ -9,7 +9,10 @@ function Register(){
 
     const navigate = useNavigate();
     const submitHandler = (e) => {
-        // To not reload the page on Submit
+        if (name === '' || surname === '')
+            setError('Fill all the fields')
+        else
+        {// To not reload the page on Submit
         e.preventDefault();
         const postData = {data : {name, surname}}
         // console.log(postData)
@@ -31,14 +34,16 @@ function Register(){
             console.log(err)
             setError('User with this name and surname already exists!');
             
-        })
+        })}
         
     }
     return(
         <>
         <NavBar />
-
-        <div className="col-sm-6 offset-sm-3">
+        <br/><br/> <br/><br/>
+        <div className="Form">
+        <div className="card">
+            <div className="card-body">
             <form onSubmit={submitHandler}>
                 <h1>Create a user</h1>
                 <label htmlFor="name" className="form-label">Name</label>
@@ -48,8 +53,11 @@ function Register(){
                 <input type="text" className="form-control" value={surname} onChange={(e)=>setSurname(e.target.value)}/>
                 <br/>
                 {error && <div className="text-danger">{error}</div>}
-                <button type="submit">Enter</button>
+                <br/>
+                <button type="submit" className="btn btn-dark">Submit</button>
             </form>
+            </div>
+        </div>
         </div>
        </>
     );

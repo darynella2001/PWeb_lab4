@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../NavBar";
+import NavBar from "../components/NavBar";
 
-const AddQuiz = () => {
+function AddQuiz () {
     const [formFields, setFormFields] = useState([{question:'',answers:[],correct_answer:''},])
     const [title, setTitle] = useState('');
     const [submission, setSubmission] = useState({data:{}})
@@ -77,9 +77,11 @@ const AddQuiz = () => {
     return (
         <div>
           <NavBar/>
+          <br/><br/><br/><br/>
             <div className="Form">
                 <div className="card">
                     <div className="card-body">
+                        <h1 className="card-title">Create a Quiz</h1>
                         <form onSubmit={submit}>
                             <label htmlFor="title" className="form-label">Title</label> <br/>
                             <input type="text"  className="form-control" name="title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
@@ -88,7 +90,7 @@ const AddQuiz = () => {
                             formFields.map((form, index) => {
                                 return(
                                     <div key={index}>
-                                        <label htmlFor="title" className="form-label">Questions</label> 
+                                        <label htmlFor="title" className="form-label">Question</label> 
                                         <input type="text"  className="form-control" name="question" onChange={event=>handleFormChange(event, index)} value={form.question}/> <br/>
 
                                         <label htmlFor="answer[0]" className="form-label">Answer 1</label> 

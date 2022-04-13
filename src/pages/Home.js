@@ -1,11 +1,14 @@
 import React from "react";
-import NavBar from "../NavBar";
+import NavBar from "../components/NavBar";
 export default function Home(){
     return(
         <div>
                   <NavBar />
-                                  <h1>Welcome to Hogwarts!</h1>
-                                  {/* <img src={process.env.PUBLIC_URL + "/bg2.jpg"}/> */}
+                  <br/><br/><br/><br/>
+                  
+
+                                  <h1 >Welcome to Hogwarts!</h1>
+                                  <img src={process.env.PUBLIC_URL + "/bg2.jpg"} className="img-fluid p-5"/>
         </div>
     );
 }

@@ -57,7 +57,7 @@ return(
         {step === 1 && <Start onQuizStart = {quizStartHandler}/>}
         
        
-        {step == 2 && <Answer
+        {step === 2 && <Answer
         data={questions[activeQuestion]}
         onAnswerUpdate={setAnswers}
         numberOfQuestions={questions.length}

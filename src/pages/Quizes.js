@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../NavBar";
+import NavBar from "../components/NavBar";
 import axios from "axios";
-import PrintQuizes from "../PrintQuizes";
+import PrintQuizes from "../components/PrintQuizes";
+import * as ReactBootStrap from 'react-bootstrap';
 function Quizes(){
     const [quizes, setQuizes] = useState(null);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         getAllQuizes();
     }, []);
@@ -16,7 +18,9 @@ function Quizes(){
         })
         .then((response) => {
                 const allQuizes = response.data;
-                setQuizes(allQuizes);  
+                setQuizes(allQuizes);         
+                setLoading(true);
+ 
         })
         .catch(error => console.error(`Error: ${error}`));
    }
@@ -25,7 +29,9 @@ function Quizes(){
     return(
         <div>
             <NavBar />
-            <PrintQuizes {...quizes} />
+            <br/><br/><br/><br/>
+            {loading ? <PrintQuizes {...quizes} /> : <ReactBootStrap.Spinner animation="border"/>}
+            
             
             
                 {/* <div>{JSON.stringify(quizes)}</div> */}

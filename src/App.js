@@ -3,22 +3,27 @@ import Home from './pages/Home';
 import Quizes from './pages/Quizes';
 import Register from './pages/Register';
 import AddQuiz from './pages/AddQuiz';
-import Protected from './Protected';
-import Quiz from './Quiz';
+import Protected from './components/Protected';
+import Quiz from './components/Quiz';
 import { Route, Routes } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
-
+import Sound from 'react-sound';
+import HarryPotterSoundtrack from './harry-potter.mp3';
 
 function App() {
   return (
     <div className="App">
+      <Sound
+                url={HarryPotterSoundtrack}
+                playStatus="PLAYING"
+                loop={true} 
+                />
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route exact path="/quizes" element={<Protected Cmp={Quizes}/>} />
         <Route exact path="/add" element={<Protected Cmp={AddQuiz}/>} />
         <Route exact path="/register" element={<Register/>} />
         <Route path="/quizes/:id" element={<Protected Cmp={Quiz}/>} />
-        {/* <Route path="/quizes/:id/:idx" element={<Protected Cmp={Answer}/>} /> */}
 
         <Route
         path="*"
@@ -29,6 +34,9 @@ function App() {
         }
       />
       </Routes>
+      <div>
+      
+      </div>
       </div>
   );
 }
